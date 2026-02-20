@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Smart AI Bike Safety System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+  <div class="login-bg">
+    <div class="grid-overlay"></div>
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+  </div>
+
+  <a href="index.html" class="back-link">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Home
+  </a>
+
+  <div class="login-container">
+    <div class="login-card glass">
+      <div class="login-header">
+        <img src="assets/team-logo.png" alt="Tech-Ardpi32" class="login-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="logo-icon" style="display:none;font-size:2.5rem;margin-bottom:16px">◆</span>
+        <h1>Device Login</h1>
+        <p>Enter your product credentials to access the dashboard</p>
+      </div>
+
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="productId">Product ID</label>
+          <input 
+            type="text" 
+            id="productId" 
+            name="productId" 
+            placeholder="e.g. TAP1023" 
+            autocomplete="off"
+            required
+          >
+          <span class="input-hint">Must start with "TAP" (e.g. TAP1023)</span>
+          <span id="productIdError" class="error-msg"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            placeholder="Enter your password"
+            required
+          >
+          <span id="passwordError" class="error-msg"></span>
+        </div>
+
+        <div id="formError" class="form-error"></div>
+
+        <button type="submit" class="btn-primary btn-full">
+          <span id="btnText">Login</span>
+          <span id="btnLoader" class="loader"></span>
+        </button>
+      </form>
+
+      <p class="login-demo">Demo: TAP1023 / bike2025</p>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

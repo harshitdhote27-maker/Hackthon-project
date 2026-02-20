@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Smart AI Bike Safety System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="dashboard-page">
+  <nav class="dashboard-nav">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/team-logo.png" alt="Tech-Ardpi32" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"><span class="logo-icon" style="display:none">◆</span>
+        <span>BikeSafe AI</span>
+      </a>
+      <div class="nav-actions">
+        <span class="product-id-display" id="productIdDisplay">TAP1023</span>
+        <a href="login.html" class="btn-logout" id="logoutBtn">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <aside class="sidebar">
+    <ul class="sidebar-nav">
+      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#location">Live Location</a></li>
+      <li><a href="#alerts">Alerts</a></li>
+      <li><a href="#contacts">Contacts</a></li>
+      <li><a href="#health">Bike Health</a></li>
+    </ul>
+  </aside>
+
+  <main class="dashboard-main">
+    <header class="dashboard-header">
+      <h1>Device Dashboard</h1>
+      <p>Real-time monitoring for your bike</p>
+      <div class="status-badge" id="deviceStatus">
+        <span class="status-dot online"></span>
+        <span>Device Online</span>
+      </div>
+    </header>
+
+    <section id="overview" class="dashboard-section">
+      <h2>Device Status</h2>
+      <div class="metrics-grid">
+        <div class="metric-card glass">
+          <span class="metric-label">Fuel Level</span>
+          <div class="metric-value fuel">
+            <span id="fuelLevel">68</span><span class="unit">%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="fuelBar" style="width: 68%"></div>
+          </div>
+          <span class="metric-hint">~240 km range</span>
+        </div>
+        <div class="metric-card glass">
+          <span class="metric-label">Battery</span>
+          <div class="metric-value"><span id="batteryLevel">94</span><span class="unit">%</span></div>
+          <div class="progress-bar">
+            <div class="progress-fill battery" id="batteryBar" style="width: 94%"></div>
+          </div>
+        </div>
+        <div class="metric-card glass">
+          <span class="metric-label">Engine Temp</span>
+          <div class="metric-value"><span id="engineTemp">72</span><span class="unit">°C</span></div>
+          <span class="metric-hint">Normal</span>
+        </div>
+        <div class="metric-card glass">
+          <span class="metric-label">Last Trip</span>
+          <div class="metric-value"><span>42</span><span class="unit">km</span></div>
+          <span class="metric-hint">Today</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="dashboard-section">
+      <h2>Live Location Map</h2>
+      <div class="map-card glass">
+        <div id="map" class="map-container"></div>
+        <div class="map-overlay">
+          <span class="map-label">Live GPS</span>
+          <span class="map-coords">28.6139° N, 77.2090° E</span>
+          <span class="map-time">Updated 2 mins ago</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="alerts" class="dashboard-section">
+      <h2>Crash & Emergency Alerts</h2>
+      <div class="alerts-container">
+        <div class="alert-card glass success">
+          <span class="alert-icon">✓</span>
+          <div>
+            <strong>No Active Alerts</strong>
+            <p>All systems normal. Last incident: None</p>
+          </div>
+        </div>
+        <div class="alert-history">
+          <h3>Recent Alerts</h3>
+          <div class="alert-item">
+            <span class="alert-type info">Info</span>
+            <span>Geofence exit - Feb 14, 10:32 AM</span>
+          </div>
+          <div class="alert-item">
+            <span class="alert-type success">Cleared</span>
+            <span>Low fuel warning resolved - Feb 13</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="dashboard-section">
+      <h2>Emergency Contacts</h2>
+      <div class="contacts-grid">
+        <div class="contact-card glass">
+          <span class="contact-badge">1</span>
+          <strong>Emergency Services</strong>
+          <span class="contact-num">112</span>
+        </div>
+        <div class="contact-card glass">
+          <span class="contact-badge">2</span>
+          <strong>Family</strong>
+          <span class="contact-num">+91 98765 43210</span>
+        </div>
+        <div class="contact-card glass">
+          <span class="contact-badge">3</span>
+          <strong>Insurance</strong>
+          <span class="contact-num">+91 87654 32109</span>
+        </div>
+      </div>
+      <button class="btn-secondary">Edit Contacts</button>
+    </section>
+
+    <section id="health" class="dashboard-section">
+      <h2>Bike Health Metrics</h2>
+      <div class="health-grid">
+        <div class="health-card glass">
+          <span class="health-label">Tire Pressure</span>
+          <div class="health-status ok">OK</div>
+          <span class="health-detail">Front: 32 | Rear: 34 psi</span>
+        </div>
+        <div class="health-card glass">
+          <span class="health-label">Oil Level</span>
+          <div class="health-status ok">OK</div>
+        </div>
+        <div class="health-card glass">
+          <span class="health-label">Brake Pads</span>
+          <div class="health-status warn">Check Soon</div>
+          <span class="health-detail">~2000 km remaining</span>
+        </div>
+        <div class="health-card glass">
+          <span class="health-label">Next Service</span>
+          <div class="health-status info">1500 km</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
